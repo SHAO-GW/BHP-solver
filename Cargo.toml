@@ -1,0 +1,28 @@
+[package]
+name = "teukolsky-ode-solver"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+
+[dependencies]
+castaway = "0.2.3"
+num-complex = "0.4.6"
+faer={version="0.22.6", optional = true}
+
+[dev-dependencies]
+fastrand = "2.3.0"
+plotters = "0.3.7"
+
+[profile.release]
+debug = true
+lto=true
+codegen-units = 1
+
+[lib]
+#crate-type = ["cdylib"]
+
+[features]
+default = ["mkl"]
+openblas=[]
+mkl=[]
+faer=["dep:faer"]
